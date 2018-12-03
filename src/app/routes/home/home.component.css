@@ -1,0 +1,47 @@
+.image-style{
+  height: 200px;
+  width: 500px;
+  margin: auto;
+}
+
+.button-style {
+  border-radius: 0;
+  width: 200px;
+  margin: auto;
+  border-radius: 0;
+  border: none;
+  background-color: #eeeeee;
+}
+
+.button-style:focus {
+  border: none;
+  border-radius: 0;
+  background-color: #4286f4;
+}
+
+.button-style:active {
+  border: none;
+  border-radius: 0;
+  background-color: #4286f4;
+}
+
+.button-style:checked {
+  border: none;
+  border-radius: 0;
+  background-color: #4286f4;
+}
+
+.high-confidence {
+  background-color: green;
+  color: #000;
+}
+
+.low-confidence {
+  background-color: yellow;
+  color: #000;
+}
+
+.lowest-confidence {
+  background-color: red;
+  color: #000;
+}
