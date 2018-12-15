@@ -1,100 +1,100 @@
-<div class="container">
-  <div class="row" style="flex-direction: column; text-align: center; margin-top: 50px">
-    <h1>Signature Verification</h1>
-  </div>
-  <div class="row text-center" style="margin: 50px auto">
-    <div class="col-6">
-      <button class="btn btn-default button-style" (click)="selectCategory('new')">
-        <h6 style="margin-top: 5px">New Customer</h6>
-      </button>
+<div class="row background-image" [style.height.px]="screen_height" [style.width.px]="screen_width">
+  <div class="container">
+    <div class="row" style="flex-direction: column; text-align: center; margin-top: 50px">
+      <h1>Signature Verification</h1>
     </div>
-    <div class="col-6">
-      <button class="btn btn-default button-style" (click)="selectCategory('existing')">
-        <h6 style="margin-top: 5px">Existing Customer</h6>
-      </button>
-    </div>
-  </div>
-  <div style="margin: 50px auto;" *ngIf="category === 'new'">
-    <div class="row">
+    <div class="row text-center" style="margin: 50px auto">
       <div class="col-6">
-        <label class="card" style="margin: auto; width: 300px; height: 40px;
-    border-radius: 0; border: none; background-color: #eeeeee;">
-          <h6 *ngIf="!NewName" class="text-center" style="margin-top: 10px">Browse Image</h6>
-          <h6 *ngIf="NewName" class="text-center" style="margin-top: 10px">{{NewName}}</h6>
-          <input type="file" (change)="selectNewFile($event.target.files)" style="display: none;">
-        </label>
+        <button class="btn btn-default button-style" (click)="selectCategory('new')">
+          <h6 style="margin-top: 5px">New Customer</h6>
+        </button>
       </div>
-      <div class="col-6 text-center">
-        <form>
-          <input style="background-color: #eeeeee; border: none; height: 40px; width: 300px; text-align: center" type="text" [formControl]="customerID"  placeholder="Customer ID">
-        </form>
-      </div>
-    </div>
-    <div *ngIf="!fileUpload">
-      <div class="row">
-        <img *ngIf="NewName" class="mt-5 image-style" [src]="imageSrcNew">
-      </div>
-      <div class="row">
-        <button *ngIf="NewName" class="btn btn-default mt-5 button-style" (click)="upload()">
-          <h6 style="margin-top: 5px">Upload</h6>
+      <div class="col-6">
+        <button class="btn btn-default button-style" (click)="selectCategory('existing')">
+          <h6 style="margin-top: 5px">Verify Customer</h6>
         </button>
       </div>
     </div>
-    <div class="text-center" *ngIf="fileUpload">
-      <h3 style="margin: 100px auto">User {{customerID.value}} added!</h3>
-    </div>
-  </div>
-  <div style="margin: 50px auto" *ngIf="category === 'existing'">
-    <div class="row">
-      <div class="col-md-6">
-        <label class="card" style="margin: auto; width: 300px; height: 40px;
+    <div style="margin: 50px auto;" *ngIf="category === 'new'">
+      <div class="row" *ngIf="!fileUpload">
+        <div class="col-6">
+          <label class="card" style="margin: auto; width: 300px; height: 40px;
     border-radius: 0; border: none; background-color: #eeeeee;">
-          <h6 *ngIf="!VerifyName" class="text-center" style="margin-top: 10px">Browse Image</h6>
-          <h6 *ngIf="VerifyName" class="text-center" style="margin-top: 10px">{{VerifyName}}</h6>
-          <input type="file" (change)="selectVerifyFile($event.target.files)" style="display: none;">
-        </label>
+            <h6 *ngIf="!NewName" class="text-center" style="margin-top: 10px">Browse Image</h6>
+            <h6 *ngIf="NewName" class="text-center" style="margin-top: 10px">{{NewName}}</h6>
+            <input type="file" (change)="selectNewFile($event.target.files)" style="display: none;">
+          </label>
+        </div>
+        <div class="col-6 text-center">
+          <form>
+            <input style="background-color: #eeeeee; border: none; height: 40px; width: 300px; text-align: center" type="text" [formControl]="customerID"  placeholder="Customer ID">
+          </form>
+        </div>
       </div>
-      <div class="col-md-6 text-center" style="width: 300px;">
-        <h6>Select Customer</h6>
-        <select class="form-control text-center" [(ngModel)]="verifyID" id="verifyID" style="width: 300px; margin: auto;">
-          <option *ngFor="let value of registeredID" style="font-weight: bold">{{value}}</option>
-        </select>
+      <div *ngIf="!fileUpload">
+        <div class="row">
+          <img *ngIf="NewName" class="mt-5 image-style" [src]="imageSrcNew">
+        </div>
+        <div class="row">
+          <button *ngIf="NewName" class="btn btn-default mt-5 button-style" (click)="upload()">
+            <h6 style="margin-top: 5px">Upload</h6>
+          </button>
+        </div>
+      </div>
+      <div class="text-center" *ngIf="fileUpload">
+        <h3 style="margin: 100px auto">User {{customerID.value}} added!</h3>
       </div>
     </div>
-    <div>
+    <div style="margin: 50px auto" *ngIf="category === 'existing'">
       <div class="row">
-        <img *ngIf="VerifyName" class="mt-5 image-style" [src]="imageSrcVerify">
-      </div>
-      <div class="row" *ngIf="!distance">
-        <button *ngIf="VerifyName" class="btn btn-default mt-5 button-style" (click)="verify()">
-          <h6 style="margin-top: 5px">Upload</h6>
-        </button>
-      </div>
-      <div class="row" style="flex-direction: column; text-align: center; margin-top: 50px" *ngIf="distance">
-        <h5 class="text-center" style="margin-top: 5px">Distance between original and uploaded image is {{distance}}</h5>
-      </div>
-      <div class="progress mt-5" *ngIf="state == 1">
-        <div class="progress-bar high-confidence" role="progressbar" [style.width.%]="distanceValue">
+        <div class="col-md-6">
+          <label class="card" style="margin: auto; width: 300px; height: 40px;
+    border-radius: 0; border: none; background-color: #eeeeee;">
+            <h6 *ngIf="!VerifyName" class="text-center" style="margin-top: 10px">Browse Image</h6>
+            <h6 *ngIf="VerifyName" class="text-center" style="margin-top: 10px">{{VerifyName}}</h6>
+            <input type="file" (change)="selectVerifyFile($event.target.files)" style="display: none;">
+          </label>
+        </div>
+        <div class="col-md-6 text-center" style="width: 300px;">
+          <!--<h6>Select Customer</h6>-->
+          <select class="form-control text-center" [(ngModel)]="verifyID" id="verifyID" style="width: 300px; margin: auto;">
+            <option value="" hidden>Customer ID</option>
+            <option *ngFor="let value of registeredID" style="font-weight: bold">{{value}}</option>
+          </select>
         </div>
       </div>
-      <div class="progress mt-5" *ngIf="state == 2">
-        <div class="progress-bar high-confidence" role="progressbar" style="width:20%">
+      <div>
+        <div class="row">
+          <div class="col-6">
+            <img *ngIf="VerifyName" class="mt-5 image-style" [src]="imageSrcVerify">
+          </div>
+          <div class="col-6">
+            <img *ngIf="VerifyName" class="mt-5 image-style" [src]="imageSrcVerify">
+          </div>
         </div>
-        <div class="progress-bar low-confidence" role="progressbar" [style.width.%]="distanceValue">
+        <div class="row" *ngIf="!distance">
+          <button *ngIf="VerifyName" class="btn btn-default mt-5 button-style" (click)="verify()">
+            <h6 style="margin-top: 5px">Upload</h6>
+          </button>
         </div>
-      </div>
-      <div class="progress mt-5" *ngIf="state == 3">
-        <div class="progress-bar high-confidence" role="progressbar" style="width:20%">
+        <div class="row" style="flex-direction: column; text-align: center; margin-top: 50px" *ngIf="distance">
+          <h5 class="text-center" style="margin-top: 5px">Distance between original and uploaded image is {{distance}}</h5>
         </div>
-        <div class="progress-bar low-confidence" role="progressbar" style="width:20%">
+        <div class="progress mt-5" *ngIf="state == 1">
+          <div class="progress-bar high-confidence" role="progressbar" [style.width.%]="distanceValue">
+          </div>
+          Genuine
         </div>
-        <div class="progress-bar lowest-confidence" role="progressbar" [style.width.%]="distanceValue">
+        <div class="progress mt-5" *ngIf="state == 2">
+          <div class="progress-bar low-confidence" role="progressbar" [style.width.%]="distanceValue">
+          </div>
+          Forged
         </div>
-      </div>
-      <div class="row" *ngIf="distanceValue">
-        <div class="col-2 text-center pl-4">Highest Confidence for Genuine</div>
-        <div class="col-3 text-center pl-5">Medium Confidence for Genuine</div>
-        <div class="col-7 text-center">Lowest Confidence for Genuine</div>
+        <div class="progress mt-5" *ngIf="state == 3">
+          <div class="progress-bar lowest-confidence" role="progressbar" [style.width.%]="distanceValue">
+          </div>
+          Forged
+        </div>
       </div>
     </div>
   </div>
