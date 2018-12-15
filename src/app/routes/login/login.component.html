@@ -1,0 +1,36 @@
+<div class="row" style="height: 400px" [style.width.px]="screenWidth">
+  <img src="../../../assets/ribbon.jpg" style="width: 100%">
+</div>
+<br><br>
+<div class="container">
+  <div class="col-6" style="display: inline-block;">
+    <form style="margin-right: 56px">
+      <div class="form-group row">
+        <label>Username</label>
+        <input type="text" class="form-control" name="regID" [(ngModel)]="loginCredentials.id">
+      </div>
+      <div class="form-group row">
+        <label>Password</label>
+        <input type="password" class="form-control" name="regPwd" [(ngModel)]="loginCredentials.pwd">
+      </div>
+      <div class="row">
+        <button class="btn btn-default" (click)="onLogin()">Login</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-6 vl" style="display: inline-block">
+    <form style="margin-left: 56px">
+      <div class="form-group row">
+        <label>Username</label>
+        <input type="text" class="form-control" name="regID" [(ngModel)]="regCredentials.id">
+      </div>
+      <div class="form-group row">
+        <label>Password</label>
+        <input type="password" class="form-control" name="regPwd" [(ngModel)]="regCredentials.pwd">
+      </div>
+      <div class="row">
+        <button class="btn btn-default" (click)="onRegister()">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
