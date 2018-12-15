@@ -1,0 +1,9 @@
+.ribbon {
+  background: url("../../../assets/ribbon.jpg") no-repeat;
+  background-size: 100%;
+}
+
+.vl {
+  border-left: 1px solid #aaaaaa;
+  height: 225px;
+}
