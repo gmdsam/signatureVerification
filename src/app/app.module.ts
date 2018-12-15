@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 import { ROUTES } from './app.route';
 import { HomeComponent } from './routes/home/home.component';
 import {PreloadAllModules, RouterModule} from '@angular/router';
+import { LoginComponent } from './routes/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
